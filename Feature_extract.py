@@ -30,7 +30,7 @@ def preprocess(text):
     processed = [ks.stem(w) for w in word_tokens if w not in stop_words]
     return processed
 
-
+#to extract the relevance 
 def relevance_extract():
     with open('qrels.dev.tsv', 'rt', encoding="utf-8") as f:
         dict_query = defaultdict(list)
@@ -41,7 +41,7 @@ def relevance_extract():
             dict_query[jsonstr[0]].append(jsonstr[2])
         return dict_query
 
-
+#extract seven features.
 def feature_extract():
     searcher = SimpleSearcher.from_prebuilt_index('msmarco-passage')
     searcher.set_qld(1000)
