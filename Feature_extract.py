@@ -36,7 +36,7 @@ def relevance_extract():
         dict_query = defaultdict(list)
         list_passage={}
         for jsonstr in f.readlines():
-            # 将josn字符串转化为dict字典
+            # Convert josn string to dict dictionary
             jsonstr = jsonstr.split("\t")
             dict_query[jsonstr[0]].append(jsonstr[2])
         return dict_query
