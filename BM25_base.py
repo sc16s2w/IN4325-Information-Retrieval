@@ -20,10 +20,10 @@ import math
 import datetime
 from pyserini.index import IndexReader
 from pyserini.search import SimpleSearcher
-outputTRECFile = open("improvement2", "w")
+outputTRECFile = open("BM25_origin2", "w")
 
+#this function can build a basic bm25 model
 if __name__ == "__main__":
-    starttime =time.time()
     searcher = SimpleSearcher('/Users/wangsiwei/PycharmProjects/IR_BM/venv/anserini/indexes/msmarco-passage/lucene'
                                '-index-msmarco/')
     index_reader = IndexReader('/Users/wangsiwei/PycharmProjects/IR_BM/venv/anserini/indexes/msmarco-passage/lucene'
@@ -50,6 +50,7 @@ if __name__ == "__main__":
                     outputTRECFile.write(
                         "{} Q0 {} {} {:.6f} Anserini\n".format(id, hits[i].docid, i + 1, hits[i].score))
                 else:
+                    #if there are not 1000 passages, add the other one
                     while i != 1000:
                         fake_passage_id = random.randint(0, 8841822)
                         while fake_passage_id in true_passage_list:
@@ -64,4 +65,3 @@ if __name__ == "__main__":
                 print("{} Q0 {} {} {:.6f} Anserini\n".format(id, hits[i].docid, i + 1, hits[i].score))
                 outputTRECFile.write(
                     "{} Q0 {} {} {:.6f} Anserini\n".format(id, hits[i].docid, i + 1, hits[i].score))
-    endtime = time.time()
