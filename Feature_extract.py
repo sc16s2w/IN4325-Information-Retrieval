@@ -54,7 +54,7 @@ def feature_extract():
         i = 0
         for jsonstr in f.readlines():
             i = i+1
-            # 将josn字符串转化为dict字典
+            # Convert josn string to dict dictionary
             jsonstr = jsonstr.split("\t")
             jsonstr[0] = int(jsonstr[0])
             if i>9000:
